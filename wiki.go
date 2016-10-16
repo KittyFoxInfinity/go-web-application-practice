@@ -1,7 +1,7 @@
 package main
 
 import (
-  // "fmt"
+  "fmt"
   "html/template"
   "io/ioutil"
   "net/http"
@@ -33,7 +33,7 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
   title := r.URL.Path[len("/view/"):]
-  p, _ := loadPage(title)
+  p, e := loadPage(title)
   renderTemplate(w, "view", p)
 }
 
